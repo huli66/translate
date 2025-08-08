@@ -4,6 +4,10 @@ import { baiduTranslate, baiduFieldTranslate } from './src/server.js';
 const app = express();
 app.use(express.json());
 
+app.get('/', (req, res) => {
+  res.send('Hello World');
+});
+
 app.post('/translate', async (req, res) => {
   const { queryArr, from, to } = req.body;
   const result = await baiduTranslate(queryArr, from, to);
@@ -34,6 +38,6 @@ app.post('/queryTranslatedText', async (req, res) => {
   res.send(result);
 });
 
-app.listen(3000, () => {
-  console.log('Server is running on port 3000');
+app.listen(3090, () => {
+  console.log('Server is running on port 3090');
 });
